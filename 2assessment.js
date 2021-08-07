@@ -4,11 +4,6 @@ const assessmentButton = document.getElementById('assessment');
 const resultDivided = document.getElementById('result-area');
 const tweetDivided = document.getElementById('tweet-area');
 
-function removeAllChildren(element) {
-  while (element.firstChild) {
-    element.removeAllChild(element.firstChild);
-  }
-}
 assessmentButton.onclick = () => {
   const userName = userNameInput.value;
   if (userName.length === 0) {
@@ -17,7 +12,7 @@ assessmentButton.onclick = () => {
   }
 
   // 診断結果表示エリアの作成
-  removeAllChildren(resultDivided);
+  resultDivided.innerText = "";
   const header = document.createElement('h3');
   header.innerText = '診断結果';
   resultDivided.appendChild(header);
@@ -28,7 +23,7 @@ assessmentButton.onclick = () => {
   resultDivided.appendChild(paragraph);
 
   // ツイートエリアの作成
-  removeAllChildren(tweetDivided);
+  tweetDivided.innerText = "";
   const anchor = document.createElement('a');
   const hrefValue = 
  'https://twitter.com/intent/tweet?button_hashtag=' +
@@ -82,7 +77,7 @@ function assessment(userName) {
 }
 
 userNameInput.onkeydown = event => {
-  if (event.key === 'Enter') {
-    assessmentButton.onclick();
-  }
-};
+    if (event.key === 'Enter') {
+      assessmentButton.onclick();
+    }
+  };
